@@ -1,0 +1,31 @@
+Microsoft questions 
+
+3. Bulls and Cows
+
+
+string getHint(string secret, string guess) {
+        unordered_map<char,int> m1 ;
+        unordered_map<char,int> m2 ;
+        int x = 0 , y = 0 ;
+        for(int i = 0 ;i< secret.length() ; i++){
+            char ch1 = secret[i] ; 
+            char ch2 = guess[i] ; 
+            if(ch1 == ch2){
+                x++ ; 
+            }
+            else{
+                m1[ch1]++ ;
+                m2[ch2]++ ; 
+
+            }
+        }
+
+        for(auto it : m1){
+            char ch = it.first ; 
+            if(m2[ch] != 0){
+                y += min(m1[ch],m2[ch]) ; 
+            }
+        }
+        
+        return to_string(x)+'A'+to_string(y)+'B';
+    }
